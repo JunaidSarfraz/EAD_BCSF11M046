@@ -1,0 +1,6 @@
+My Budget
+17/02/2015
+17/03/2015
+50000
+Transport,Food,clothing,HouseHolds,Miscellaneous
+10000,10000,10000,10000,10000

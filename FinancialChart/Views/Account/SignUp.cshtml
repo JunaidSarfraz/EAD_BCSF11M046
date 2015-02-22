@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.title = "SignUp";
+}
+
+<script src="~/Scripts/jquery-1.8.2.intellisense.js"></script>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#email_input").change(checkUser);
+    });
+
+    function checkUser() {
+        $("#email_error").html("checking...");
+        var Email = $("#email_input").val();
+        $.getJSON("/Account/CheckAvailability?email="+Email,
+            function (d) {
+                //Here d contains data
+                if (d == true)
+                    //do something
+                    $("#email_error").html("Taken...");
+                else
+                    //do something
+                    $("#email_error").html("Available...");
+        });
+    }
+</script>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <div class="navbar-right">
+                <a id="Login" href="/Account/Login">Login</a>
+                <a id="Account_btn" href="/Account/SignUp" class="btn btn-default navbar-btn"><font color="White"><b>FREE ACCOUNT</b></font></a>
+            </div>
+            <a class="navbar-brand" href="/Home/Index"><img alt="Brand" src="..."></a>
+            @*<form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>*@
+        </div>
+    </div>
+</nav>
+
+<div id="signUpdiv" class="container">
+    <form name="signupForm" method="post" action="/Account/SaveUser">
+        <table class="navbar-center signupTbl">
+            <tr>
+                <td class="signupTblCaptions">Name</td>
+                <td width="60%"><input name="Name" class="signupTblInp" id="Name_input" type="text" placeholder="Enter Name" /></td>
+                <td id="name_error" class="errors"></td>
+            </tr>
+            <tr>
+                <td class="signupTblCaptions">Email</td>
+                <td width="60%"><input name="Email" id="email_input" class="signupTblInp" type="email" placeholder="Enter Email" /></td>
+                <td id="email_error" class="errors"></td>
+            </tr>
+            <tr>
+                <td class="signupTblCaptions">Password</td>
+                <td width="60%"><input name="password" id="password_input" class="signupTblInp" type="password" placeholder="Password" /></td>
+                <td id="CFrim_email_error" class="errors"></td>
+            </tr>
+            <tr>
+                <td class="signupTblCaptions">Confirm Password</td>
+                <td width="60%"><input id="CFrim_password_input" name="CFrim_password_input" class="signupTblInp" type="password" placeholder="Confirm Password" /></td>
+                <td id="CFrim_email_error" class="errors"></td>
+            </tr>
+            <tr>
+                <td class="signupTblCaptions">Gender</td>
+                <td width="60%">
+                    <select id="gender_value" name="gender" class="signupTblInp">
+                        <option selected="selected">Male</option>
+                        <option>FeMale</option>
+                    </select>
+                </td>
+                <td id="CFrim_email_error" class="errors"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-default signupTblsubmitBtn" value="SignUp" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

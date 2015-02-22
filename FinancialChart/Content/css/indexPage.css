@@ -1,0 +1,38 @@
+#Account_btn{
+	background-color:red;
+	font-family:Calibri;
+	font-size:large;
+}
+.Hov:hover{
+	background-color:lightblue;
+}
+.signupTbl{
+	width:50%;
+}
+.signupTblCaptions{
+	color:white;
+    padding-top:20px;
+	text-align:center;
+}
+.signupTblInp{
+	width:100%;
+    margin-top:20px;
+	text-align:center;
+	font-weight:bold;
+	-moz-border-radius:10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Safari, Chrome */
+	-khtml-border-radius: 10px; /* KHTML */
+	border-radius: 10px; /* CSS3 */
+	behavior:url("border-radius.htc");
+}
+.errors{
+	font-weight:bold;
+	color:red;
+	width:20%;
+}
+.signupTblsubmitBtn{
+    background-color:black;
+    color:white;
+    margin-top:20px;
+    width:100%;
+}

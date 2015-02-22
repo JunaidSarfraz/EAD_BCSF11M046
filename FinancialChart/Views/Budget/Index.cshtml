@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Budget";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<a href="/Budget/AddBudget" class="btn btn-default">Add New Budget</a>
+<form action="/Budget/BudgetFromFile" method="post" enctype="multipart/form-data">
+    <input type="file" value="Upload" name="Bfile"/>
+    <input type="submit" class="btn btn-default" value="Upload Budget From File" />
+</form>
+
+@if (@Model.Count == 0)
+{
+    <p>There is no budget to show</p>
+}
+else
+{
+    <table border="1">
+        <tr>
+            <td>Budget Title</td>
+            <td>Start Date</td>
+            <td>End Date</td>
+            <td>Income</td>
+            <td>Select/UnSelect</td>
+            <td>Delete</td>
+        </tr>
+        @foreach (var x in @Model)
+        {
+            <tr>
+                <td>@x.Name</td>
+                <td>@x.StartDate.Date.ToString("MM/dd/yyyy")</td>
+                <td>@x.EndDate.Date.ToString("MM/dd/yyyy")</td>
+                <td>@x.Income</td>
+                @if(x.isCurrent == true){
+                    <td><a href="/Budget/Unslect/@x.BID" class="btn btn-default">Unselect</a></td>
+                }
+                else{
+                    <td><a href="/Budget/slect/@x.BID" class="btn btn-default">Select</a></td>
+                }
+                <td><a href="/Budget/DeleteBudget/@x.BID" class="btn btn-default" >Delete</a></td>
+            </tr>
+        }
+    </table>
+}

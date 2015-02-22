@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+<label>Name: </label>&nbsp; @Model.Name <br />
+<label>Email: </label>&nbsp; @Model.Email <br />
+<label>Password: </label>&nbsp; @Model.password <br />
+<label>Gender: </label>&nbsp; @Model.gender <br />
+
+<a href="/Account/EditProfile" class=" btn btn-default">Edit Profile</a>

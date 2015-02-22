@@ -1,0 +1,15 @@
+﻿@{
+    @model FinancialChart.Models.User
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<form method="post" action="/Account/SaveEditProfile">
+    
+    <label>Name: </label>&nbsp; @Html.TextBoxFor(m => m.Name, new { Value = @Model.Name }) <br />
+    <label>Email: </label>&nbsp; @Html.TextBoxFor(m => m.Email, new { Value = @Model.Email })  <br />
+    <label>Password: </label>&nbsp; @Html.TextBoxFor(m => m.password, new { Value = @Model.password }) <br />
+
+    <button type="submit" class=" btn btn-default">Done Editing</button>
+
+</form>
